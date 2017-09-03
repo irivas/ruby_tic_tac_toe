@@ -46,6 +46,10 @@ class Board
     @lines.rows_as_square_numbers_and_statuses
   end
 
+  def next_player
+    moves.length.even? ? :x : :o
+  end
+
   private
   def square_empty?(square)
     !moves.include?(square)

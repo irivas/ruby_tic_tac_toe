@@ -120,4 +120,18 @@ describe Board do
       ])
     end
   end
+
+  describe "#next_player" do
+    it ":x for empty board" do
+      expect(build_board().next_player).to be :x
+    end
+
+    it ":o after first move" do
+      expect(build_board(1).next_player).to be :o
+    end
+
+    it ":x after second move" do
+      expect(build_board(1, 2).next_player).to be :x
+    end
+  end
 end
