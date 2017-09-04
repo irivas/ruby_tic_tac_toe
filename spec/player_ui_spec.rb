@@ -1,4 +1,4 @@
-require "player_ui"
+require "player_ui_builder"
 require "board"
 require "board_formatter"
 
@@ -42,5 +42,8 @@ end
 def build_ui(board, input = "")
   @input = StringIO.new(input)
   @output = StringIO.new
-  PlayerUI.new(board, input: @input, output: @output)
+  PlayerUIBuilder
+    .new(input: @input, output: @output)
+    .set_board(board)
+    .build
 end
