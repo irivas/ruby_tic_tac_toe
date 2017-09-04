@@ -89,6 +89,23 @@ describe Board do
     end
   end
 
+  describe "complete?" do
+    it "false if incomplete board and no winner" do
+      expect(build_board.complete?).to be false
+    end
+
+    it "true if winner" do
+      expect(build_board(1, 4, 2, 5, 3).complete?).to be true 
+    end
+
+    it "true if board full" do
+      # x o x
+      # x o x
+      # o x o
+      expect(build_board(1, 2, 3, 5, 4, 7, 6, 9, 8).complete?).to be true
+    end
+  end
+
   describe "#square_status" do
     it ":empty when empty" do
       expect(build_board().square_status(1)).to be :empty
@@ -132,6 +149,16 @@ describe Board do
 
     it ":x after second move" do
       expect(build_board(1, 2).next_player).to be :x
+    end
+  end
+
+  describe "#==" do
+    it "equal when moves are the same" do
+      expect(build_board(1, 2, 3)).to eq(build_board(1, 2, 3))
+    end
+
+    it "not equal when move are different" do
+      expect(build_board(1)).not_to eq(build_board)
     end
   end
 end
