@@ -3,16 +3,20 @@ require "board"
 require "board_formatter"
 
 describe PlayerUI do
-  describe "#print_board" do
+  describe "#request_move" do
+    it "sends 'clear' call to system" do
+      player_ui = build_ui(build_board, "1\n")
+      expect(player_ui).to receive(:system).with("clear")
+      player_ui.request_move
+    end
+
     it "prints current board state" do
       board = build_board
-      player_ui = build_ui(board)
-      player_ui.print_board
-      expect(@output.string).to eq(BoardFormatter.new(board).format + "\n")
+      formatted_board = BoardFormatter.new(board).format
+      build_ui(board, "1\n").request_move
+      expect(@output.string).to match(formatted_board)
     end
-  end
 
-  describe "#request_move" do
     it "prints move request for X and returns player's move" do
       player_ui = build_ui(build_board, "1\n")
       expect(player_ui.request_move).to eq(1)
@@ -35,14 +39,6 @@ describe PlayerUI do
       player_ui = build_ui(build_board(1), "1\n2\n")
       expect(player_ui.request_move).to eq(2)
       expect(@output.string).to match(/Boom: invalid input/)
-    end
-  end
-
-  describe "#clear_screen" do
-    it "sends 'clear' call to system" do
-      player_ui = build_ui(build_board)
-      expect(player_ui).to receive(:system).with("clear")
-      player_ui.clear_screen
     end
   end
 end

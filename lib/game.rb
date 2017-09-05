@@ -1,24 +1,36 @@
 require "board"
 
 class Game
-  attr_reader :board
-
-  def initialize(player_x, player_o)
+  def initialize(player_x:, player_o:, board:, result_ui_builder:)
     @player_x = player_x
     @player_o = player_o
-    @board = Board.new
+    @board = board
+    @result_ui_builder = result_ui_builder
   end
 
   def run
-    unless board.complete?
-      @board = @board.move(next_players_move)
-      run
+    if @board.complete?
+      report_game_complete
+    else
+      request_next_players_move
     end
   end
 
   private
+  def report_game_complete
+    @result_ui_builder
+      .set_board(@board)
+      .build
+      .report_result
+  end
+
+  def request_next_players_move
+      @board = @board.move(next_players_move)
+      run
+  end
+
   def next_players_move 
-    next_player.request_move(board)
+    next_player.request_move(@board)
   end
 
   def next_player 

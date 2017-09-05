@@ -1,32 +1,16 @@
-require 'board_formatter'
+require "ui"
 
-class PlayerUI
-  def initialize(board, input: $stdin, output: $stdout)
-    @board = board
-    @input = input 
-    @output = output 
-  end
-
-  def print_board
-    @output.puts(formatted_board)
-  end
-
+class PlayerUI < UI
   def request_move
-    print_request_move_prompt
+    clear_screen
+    print_board
     get_player_move
   end
 
-  def clear_screen
-    system("clear")
-  end
-
   private
-  def board
-    @board
-  end
-
-  def formatted_board
-    BoardFormatter.new(board).format
+  def get_player_move
+    print_request_move_prompt
+    get_player_move_input
   end
 
   def print_request_move_prompt
@@ -37,7 +21,7 @@ class PlayerUI
     board.next_player.upcase
   end
 
-  def get_player_move
+  def get_player_move_input
     input = @input.gets.chomp
     if valid_input?(input)
       input.to_i

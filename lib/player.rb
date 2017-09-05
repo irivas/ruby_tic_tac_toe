@@ -4,9 +4,7 @@ class Player
   end
 
   def request_move(board)
-    ui = build_ui(board)
-    ui.print_board
-    ui.request_move
+    build_ui(board).request_move
   end
 
   private
