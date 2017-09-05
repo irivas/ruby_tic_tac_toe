@@ -37,6 +37,14 @@ describe PlayerUI do
       expect(@output.string).to match(/Boom: invalid input/)
     end
   end
+
+  describe "#clear_screen" do
+    it "sends 'clear' call to system" do
+      player_ui = build_ui(build_board)
+      expect(player_ui).to receive(:system).with("clear")
+      player_ui.clear_screen
+    end
+  end
 end
 
 def build_ui(board, input = "")

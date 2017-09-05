@@ -16,6 +16,10 @@ class PlayerUI
     get_player_move
   end
 
+  def clear_screen
+    system("clear")
+  end
+
   private
   def board
     @board
