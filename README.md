@@ -13,3 +13,5 @@ To learn Ruby and OOP principles.
 Clone the repo and install the dependencies by running `bundle install`.
 
 Run `rspec` to run the tests. Or `bundle exec guard` to automatically run the tests on file change.
+
+Run `ruby tic_tac_toe.rb` to play game
