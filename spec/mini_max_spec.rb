@@ -7,9 +7,7 @@ describe MiniMax do
       # x o o
       # 7 x o
       board = build_board(1, 2, 3, 5, 4, 6, 8, 9)
-      mini_max = MiniMax.new(board)
-      mini_max.execute
-      expect(mini_max.move).to eq(7)
+      expect(MiniMax.new(board).execute.move).to eq(7)
     end
 
     it "selects winning move over losing move" do
@@ -17,9 +15,7 @@ describe MiniMax do
       # x o o
       # 7 8 x
       board = build_board(1, 2, 3, 5, 4, 6, 9)
-      mini_max = MiniMax.new(board)
-      mini_max.execute
-      expect(mini_max.move).to eq(8)
+      expect(MiniMax.new(board).execute.move).to eq(8)
     end
 
     it "selects draw over losing move" do
@@ -27,9 +23,7 @@ describe MiniMax do
       # x x o
       # 7 8 x
       board = build_board(2, 1, 4, 3, 5, 6, 9)
-      mini_max = MiniMax.new(board)
-      mini_max.execute
-      expect(mini_max.move).to eq(8)
+      expect(MiniMax.new(board).execute.move).to eq(8)
     end
 
     it "selects move to  delay losing" do
@@ -37,9 +31,7 @@ describe MiniMax do
       # 4 5 x
       # o o x
       board = build_board(2, 7, 6, 8, 9)
-      mini_max = MiniMax.new(board)
-      mini_max.execute
-      expect(mini_max.move).to eq(3)
+      expect(MiniMax.new(board).execute.move).to eq(3)
     end
   end
 end

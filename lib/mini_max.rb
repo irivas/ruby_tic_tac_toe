@@ -12,7 +12,7 @@ class MiniMax
   end
 
   def execute
-    @move, @score = move_scores.send(max_or_min) { |result| result.last }
+    @move, @score = move_scores.send(max_or_min_by, &:last)
     self
   end
 
@@ -27,10 +27,6 @@ class MiniMax
 
   def move_score(move)
     board_score(@initial_board.move(move))
-  end
-
-  def max_or_min
-    @is_maximising ? :max_by : :min_by
   end
 
   def board_score(board)
@@ -71,5 +67,9 @@ class MiniMax
 
   def recursive_options
     { depth: @depth + 1, is_maximising: !@is_maximising }
+  end
+
+  def max_or_min_by
+    @is_maximising ? :max_by : :min_by
   end
 end
