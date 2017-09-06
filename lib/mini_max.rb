@@ -40,15 +40,7 @@ class MiniMax
   end
 
   def final_score(board)
-    winning_move(board) ? winning_score : drawing_score
-  end
-
-  def winning_move(board)
-    board.winner? && next_player_wins?(board)
-  end
-
-  def next_player_wins?(board)
-    board.winner == @initial_board.next_player
+    board.winner? ? winning_score : drawing_score
   end
 
   def winning_score
