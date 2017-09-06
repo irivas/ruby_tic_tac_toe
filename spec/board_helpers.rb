@@ -1,3 +1,5 @@
+require "board"
+
 module BoardHelpers
   def build_board(*squares)
     squares.reduce(Board.new) { |board, square| board.move(square) }
