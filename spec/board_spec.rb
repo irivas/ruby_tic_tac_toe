@@ -157,8 +157,18 @@ describe Board do
       expect(build_board(1, 2, 3)).to eq(build_board(1, 2, 3))
     end
 
-    it "not equal when move are different" do
+    it "not equal when moves are different" do
       expect(build_board(1)).not_to eq(build_board)
+    end
+  end
+
+  describe "empty_squares" do
+    it "returns array of empty square numbers" do
+      expect(build_board.empty_squares).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9])
+    end
+
+    it "returns empty array when board complete" do
+      expect(drawn_board.empty_squares).to eq([])
     end
   end
 end

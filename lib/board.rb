@@ -57,6 +57,11 @@ class Board
   def ==(other)
     other.class == self.class && other.moves == moves
   end
+
+  def empty_squares
+    squares.to_a - moves
+  end
+
   private
   def square_empty?(square)
     !moves.include?(square)
