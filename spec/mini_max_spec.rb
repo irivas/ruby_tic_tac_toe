@@ -26,12 +26,23 @@ describe MiniMax do
       expect(MiniMax.new(board).execute.move).to eq(8)
     end
 
-    it "selects move to  delay losing" do
+    it "selects move to delay losing" do
+      # See http://neverstopbuilding.com/minimax (Smart/Dumb example for visualisation)
+      
       # 1 x 3
       # 4 5 x
       # o o x
       board = build_board(2, 7, 6, 8, 9)
       expect(MiniMax.new(board).execute.move).to eq(3)
+    end
+
+    it "takes optional max_depth paramter to limit search depth" do
+      # 1 x 3
+      # 4 5 x
+      # o o x
+      board = build_board(2, 7, 6, 8, 9)
+      expect(MiniMax.new(board, max_depth: 2).execute.move).to eq(3)
+      expect(MiniMax.new(board, max_depth: 1).execute.move).to eq(1)
     end
   end
 end
