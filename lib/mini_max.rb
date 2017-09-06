@@ -18,7 +18,7 @@ class MiniMax
 
   private
   def max_move_depth
-    @initial_board.total_squares + 1
+    @initial_board.total_squares
   end
 
   def move_scores
@@ -56,7 +56,7 @@ class MiniMax
   end
 
   def base_winning_score
-    max_move_depth
+    max_move_depth + 1
   end
 
   def mini_max_multiplier 
