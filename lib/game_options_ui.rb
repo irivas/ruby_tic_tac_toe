@@ -2,6 +2,7 @@ require 'ui'
 
 class GameOptionsUI < UI
   def request_game_type
+    clear_screen
     print_game_types_prompt
     get_game_type
   end

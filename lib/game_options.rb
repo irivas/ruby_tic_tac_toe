@@ -5,6 +5,7 @@ class GameOptions
 
   def run
     @game_type = @ui.request_game_type
+    self
   end
 
   def player_x
