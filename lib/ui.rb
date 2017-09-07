@@ -1,7 +1,7 @@
 require "board_formatter"
 
 class UI
-  def initialize(board:, input: $stdin, output: $stdout)
+  def initialize(board: nil, input: $stdin, output: $stdout)
     @board = board
     @input = input 
     @output = output 
