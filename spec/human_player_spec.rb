@@ -14,10 +14,11 @@ describe HumanPlayer do
       expect(@output.string).to match(board_output)
     end
   end
+
+  def build_player_ui_builder(input = "")
+    @input = StringIO.new(input)
+    @output = StringIO.new
+    PlayerUIBuilder.new(input: @input, output: @output)
+  end
 end
 
-def build_player_ui_builder(input = "")
-  @input = StringIO.new(input)
-  @output = StringIO.new
-  PlayerUIBuilder.new(input: @input, output: @output)
-end
