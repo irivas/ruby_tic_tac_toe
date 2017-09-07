@@ -1,6 +1,6 @@
 require "game_builder"
 require "game"
-require "player"
+require "human_player"
 require "player_ui_builder"
 require "board"
 require "game_result_ui_builder"
@@ -33,6 +33,6 @@ describe Game do
 
   def build_player(input)
     ui_builder = PlayerUIBuilder.new(input: StringIO.new(input), output: StringIO.new)
-    Player.new(ui_builder)
+    HumanPlayer.new(ui_builder)
   end
 end
