@@ -8,7 +8,7 @@ class AlphaBeta < MiniMaxable
   def execute
     possible_moves.each do |move|
       score = move_score(move)
-      update_move_and_score!(move, score) if better_score?(score)
+      update_result!(move, score) if better_score?(score)
       break if (@beta <= @alpha)
     end
 
@@ -19,22 +19,29 @@ class AlphaBeta < MiniMaxable
   def setup(options)
     @alpha = options.fetch(:alpha, MIN_VALUE)
     @beta = options.fetch(:beta, MAX_VALUE)
-    @score = @is_maximising ? @alpha : @beta
+    @score = initial_score
+  end
+
+  def initial_score
+    @is_maximising ? @alpha : @beta
   end
 
   def better_score?(score)
     @is_maximising ? (score > @alpha) : (score < @beta)
   end
 
-  def update_move_and_score!(move, score)
+  def update_result!(move, score)
+    update_alpha_beta!(score)
+    @move = move
+    @score = score
+  end
+
+  def update_alpha_beta!(score)
     if @is_maximising
       @alpha = score
     else
       @beta = score
     end
-
-    @move = move
-    @score = score
   end
 
   def additional_options 
