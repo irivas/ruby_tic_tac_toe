@@ -1,4 +1,4 @@
-guard 'rspec', cmd: 'rspec' do
+guard 'rspec', cmd: 'bundle exec rspec -t ~speed:slow' do
   # watch /lib/files
   watch(%r{^lib/(.+).rb$}) do |m|
     "spec/"

@@ -12,6 +12,10 @@ To learn Ruby and OOP principles.
 
 Clone the repo and install the dependencies by running `bundle install`.
 
-Run `rspec` to run the tests. Or `bundle exec guard` to automatically run the tests on file change.
+Run `rspec` to run all the tests. Run `rspec -t ~speed:slow` to filter out slow tests 
+(i.e. algorithm speed tests) 
+
+Alternatively run `bundle exec guard` to automatically run the tests on file change (note: this
+doesn't run tests tagged as `speed: 'slow'`.
 
 Run `ruby tic_tac_toe.rb` to play game

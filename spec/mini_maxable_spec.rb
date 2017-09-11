@@ -37,7 +37,7 @@ describe "MiniMaxable Algorithms" do
       check_algorithm(board, 3)
     end
 
-    it "takes optional max_depth paramter to limit search depth" do
+    it "takes optional max_depth paramter to limit search depth", failing: true do
       # 1 x 3
       # 4 5 x
       # o o x
@@ -46,9 +46,22 @@ describe "MiniMaxable Algorithms" do
       check_algorithm(board, 1, max_depth: 1)
     end
 
-    def check_algorithm(initial_board, result, options = {})
-      [AlphaBeta, MiniMax].each do |algorithm|
+    it "alpha_beta is faster than mini_max for multiple moves", speed: 'slow' do
+      board = build_board(1, 4)
+      alpha_beta_time, mini_max_time = check_algorithm(board, 2)
+      expect(alpha_beta_time).to be < mini_max_time
+    end
+
+    def check_algorithm(*args)
+      run_algos_with_time(*args).map { |(start_time, end_time)| end_time - start_time }    
+    end
+
+    def run_algos_with_time(initial_board, result, options = {})
+      [AlphaBeta, MiniMax].map do |algorithm|
+        start_time = Time.now
         expect(algorithm.new(initial_board, options).execute.move).to eq(result)
+        end_time = Time.now
+        [start_time, end_time]
       end
     end
   end
