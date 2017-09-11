@@ -79,6 +79,12 @@ class MiniMaxable
   end
 
   def recursive_options
-    { depth: next_depth, is_maximising: !@is_maximising, max_depth: @max_depth }
+    { depth: next_depth,
+      is_maximising: !@is_maximising, 
+      max_depth: @max_depth }.merge(additional_options)
+  end
+
+  def additional_options 
+    {}
   end
 end

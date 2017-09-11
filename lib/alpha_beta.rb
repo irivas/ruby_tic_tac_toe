@@ -19,6 +19,7 @@ class AlphaBeta < MiniMaxable
   def setup(options)
     @alpha = options.fetch(:alpha, MIN_VALUE)
     @beta = options.fetch(:beta, MAX_VALUE)
+    @score = @is_maximising ? @alpha : @beta
   end
 
   def better_score?(score)
@@ -34,5 +35,9 @@ class AlphaBeta < MiniMaxable
 
     @move = move
     @score = score
+  end
+
+  def additional_options 
+    {alpha: @alpha, beta: @beta}
   end
 end
