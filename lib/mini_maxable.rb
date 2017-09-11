@@ -10,6 +10,7 @@ class MiniMaxable
     @depth = options.fetch(:depth, INITIAL_DEPTH) 
     @is_maximising = options.fetch(:is_maximising, true)
     @max_depth = options.fetch(:max_depth, max_move_depth)
+    setup(options)
   end
 
   def execute
@@ -18,6 +19,8 @@ class MiniMaxable
   end
 
   private
+  def setup(options) end
+
   def max_move_depth
     @initial_board.total_squares
   end
