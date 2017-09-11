@@ -1,13 +1,14 @@
+require "alpha_beta"
 require "mini_max"
 
-describe MiniMax do
+describe "MiniMaxable Algorithms" do
   describe "#execute" do
     it "selects final square" do
       # x o x
       # x o o
       # 7 x o
       board = build_board(1, 2, 3, 5, 4, 6, 8, 9)
-      expect(MiniMax.new(board).execute.move).to eq(7)
+      check_algorithm(board, 7)
     end
 
     it "selects winning move over losing move" do
@@ -15,7 +16,7 @@ describe MiniMax do
       # x o o
       # 7 8 x
       board = build_board(1, 2, 3, 5, 4, 6, 9)
-      expect(MiniMax.new(board).execute.move).to eq(8)
+      check_algorithm(board, 8)
     end
 
     it "selects draw over losing move" do
@@ -23,7 +24,7 @@ describe MiniMax do
       # x x o
       # 7 8 x
       board = build_board(2, 1, 4, 3, 5, 6, 9)
-      expect(MiniMax.new(board).execute.move).to eq(8)
+      check_algorithm(board, 8)
     end
 
     it "selects move to delay losing" do
@@ -33,7 +34,7 @@ describe MiniMax do
       # 4 5 x
       # o o x
       board = build_board(2, 7, 6, 8, 9)
-      expect(MiniMax.new(board).execute.move).to eq(3)
+      check_algorithm(board, 3)
     end
 
     it "takes optional max_depth paramter to limit search depth" do
@@ -41,8 +42,14 @@ describe MiniMax do
       # 4 5 x
       # o o x
       board = build_board(2, 7, 6, 8, 9)
-      expect(MiniMax.new(board, max_depth: 2).execute.move).to eq(3)
-      expect(MiniMax.new(board, max_depth: 1).execute.move).to eq(1)
+      check_algorithm(board, 3, max_depth: 2)
+      check_algorithm(board, 1, max_depth: 1)
+    end
+
+    def check_algorithm(initial_board, result, options = {})
+      [AlphaBeta, MiniMax].each do |algorithm|
+        expect(algorithm.new(initial_board, options).execute.move).to eq(result)
+      end
     end
   end
 end
