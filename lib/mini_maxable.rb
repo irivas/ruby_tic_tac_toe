@@ -24,10 +24,6 @@ class MiniMaxable
     @initial_board.total_squares
   end
 
-  def move_scores
-    possible_moves.map { |move| [move, move_score(move)] }
-  end
-
   def possible_moves
     @initial_board.empty_squares
   end
@@ -84,9 +80,5 @@ class MiniMaxable
 
   def recursive_options
     { depth: next_depth, is_maximising: !@is_maximising, max_depth: @max_depth }
-  end
-
-  def max_or_min_by
-    @is_maximising ? :max_by : :min_by
   end
 end
