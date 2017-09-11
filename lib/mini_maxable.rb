@@ -79,7 +79,7 @@ class MiniMaxable
   end
 
   def recursive_score(board)
-    MiniMax.new(board, recursive_options).execute.score
+    self.class.new(board, recursive_options).execute.score
   end
 
   def recursive_options
