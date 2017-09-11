@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/matthewglover/ruby_tic_tac_toe.svg)](https://travis-ci.org/matthewglover/ruby_tic_tac_toe)
+
 # Tic Tac Toe in Ruby
 
 ## What
