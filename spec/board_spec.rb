@@ -106,20 +106,6 @@ describe Board do
     end
   end
 
-  describe "#square_status" do
-    it ":empty when empty" do
-      expect(build_board().square_status(1)).to be :empty
-    end
-
-    it ":x when X" do
-      expect(build_board(1).square_status(1)).to be :x
-    end
-
-    it ":o when O" do
-      expect(build_board(1, 2).square_status(2)).to be :o
-    end
-  end
-
   describe "#rows_as_square_numbers_and_statuses" do
     it "returns empty rows for empty board" do
       expect(build_board().rows_as_square_numbers_and_statuses).to eq([
