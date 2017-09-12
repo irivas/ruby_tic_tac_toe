@@ -1,5 +1,3 @@
-require "line"
-
 class Lines 
   def initialize(board)
     @board = board
@@ -30,11 +28,13 @@ class Lines
   end
 
   def rows_as_square_numbers_and_statuses
-    rows.map(&:as_square_numbers_and_statuses)
+    rows.map do |line| 
+      line.map { |square_number| [square_number, @board.square_status(square_number)] } 
+    end
   end
 
   def as_square_numbers 
-    lines.map(&:as_square_numbers)
+    lines
   end
 
   private
@@ -88,6 +88,6 @@ class Lines
   end
 
   def new_line(squares)
-    Line.new(@board, squares)
+    squares.to_a
   end
 end
