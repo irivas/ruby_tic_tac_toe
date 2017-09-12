@@ -6,17 +6,21 @@ class Lines
   end
 
   def statuses 
-    lines.map(&:status)
+    as_square_statuses.map do |line|
+      next :x if line_of?(line, :x)
+      next :o if line_of?(line, :o)
+      :none
+    end
   end
 
-  def as_square_numbers
-    lines.map(&:as_square_numbers)
+  def line_of?(line, status)
+    line.all? { |square_status| square_status == status }
   end
 
   def as_square_statuses
-    lines.map(&:as_square_statuses)
+    as_square_numbers.map { |line| line.map(&@board.method(:square_status)) }
   end
-  
+
   def winner?
     winner != nil
   end
@@ -27,6 +31,10 @@ class Lines
 
   def rows_as_square_numbers_and_statuses
     rows.map(&:as_square_numbers_and_statuses)
+  end
+
+  def as_square_numbers 
+    lines.map(&:as_square_numbers)
   end
 
   private
