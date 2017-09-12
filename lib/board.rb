@@ -22,6 +22,10 @@ class Board
     square_mark(square) || :empty
   end
 
+  def complete?
+    winner? || full?
+  end
+
   def winner?
     @lines.winner?
   end
@@ -48,6 +52,14 @@ class Board
 
   def next_player
     moves.length.even? ? :x : :o
+  end
+
+  def ==(other)
+    other.class == self.class && other.moves == moves
+  end
+
+  def empty_squares
+    squares.to_a - moves
   end
 
   private
@@ -79,5 +91,9 @@ class Board
   def select_moves(&index_selector)
     move_indexes = moves.each_index.select(&index_selector)
     moves.values_at(*move_indexes)
+  end
+
+  def full?
+    moves.length == total_squares
   end
 end
