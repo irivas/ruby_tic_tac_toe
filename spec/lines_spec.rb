@@ -2,17 +2,6 @@ require "lines"
 require "board"
 
 describe Lines do
-  describe "#as_square_numbers" do
-    it "returns list of square numbers for all lines" do
-      expect(Lines.new(Board.new).as_square_numbers)
-        .to eq([
-          [1,2,3], [4,5,6], [7,8,9],
-          [1,4,7], [2,5,8], [3,6,9],
-          [1,5,9], [3,5,7]
-        ])
-    end
-  end
-
   describe "#as_square_statuses" do
     it "returns list of square statuses for all lines" do
       board = build_board(1, 2, 3, 4, 5, 6, 8, 7, 9)

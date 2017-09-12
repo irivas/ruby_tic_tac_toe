@@ -16,7 +16,7 @@ class Lines
   end
 
   def as_square_statuses
-    as_square_numbers.map { |line| line.map(&@board.method(:square_status)) }
+    all.map { |line| line.map(&@board.method(:square_status)) }
   end
 
   def winner?
@@ -33,12 +33,8 @@ class Lines
     end
   end
 
-  def as_square_numbers 
-    lines
-  end
-
   private
-  def lines
+  def all
     rows + columns + diagonals
   end
 
