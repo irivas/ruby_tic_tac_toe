@@ -3,7 +3,8 @@ class MiniMax
   DRAWING_SCORE = OUT_OF_DEPTH_SCORE = 0
   INITIAL_DEPTH = 0
 
-  attr_reader :move, :score
+  attr_accessor :move, :score
+  attr_reader :is_maximising
 
   def initialize(initial_board, options = {})
     @initial_board = initial_board

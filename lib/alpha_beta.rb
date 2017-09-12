@@ -19,25 +19,25 @@ class AlphaBeta < MiniMax
   def setup(options)
     @alpha = options.fetch(:alpha, MIN_VALUE)
     @beta = options.fetch(:beta, MAX_VALUE)
-    @score = initial_score
+    self.score = initial_score
   end
 
   def initial_score
-    @is_maximising ? @alpha : @beta
+    is_maximising ? @alpha : @beta
   end
 
   def better_score?(score)
-    @is_maximising ? (score > @alpha) : (score < @beta)
+    is_maximising ? (score > @alpha) : (score < @beta)
   end
 
   def update_result!(move, score)
     update_alpha_beta!(score)
-    @move = move
-    @score = score
+    self.move = move
+    self.score = score
   end
 
   def update_alpha_beta!(score)
-    if @is_maximising
+    if is_maximising
       @alpha = score
     else
       @beta = score
