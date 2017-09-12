@@ -46,21 +46,19 @@ class Lines
     (1..total_squares)
       .step(size)
       .map(&method(:row))
-      .to_a
   end
 
   def row(start)
-    new_line((start...start + size))
+    (start...start + size).to_a
   end
 
   def columns
     (1..size)
       .map(&method(:column))
-      .to_a
   end
 
   def column(start)
-    new_line((start..total_squares).step(size))
+    ((start..total_squares).step(size)).to_a
   end
 
   def diagonals
@@ -68,11 +66,11 @@ class Lines
   end
 
   def diagonal_from_top_left
-    new_line(squares.step(size + 1))
+    (squares.step(size + 1)).to_a
   end
 
   def diagonal_from_top_right
-    new_line((size...total_squares).step(size - 1))
+    ((size...total_squares).step(size - 1)).to_a
   end
 
   def size
@@ -85,9 +83,5 @@ class Lines
 
   def squares
     @board.squares
-  end
-
-  def new_line(squares)
-    squares.to_a
   end
 end
