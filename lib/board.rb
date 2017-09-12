@@ -27,11 +27,11 @@ class Board
   end
 
   def winner?
-    @lines.winner?
+    winner != nil
   end
 
   def winner
-    @lines.winner
+    line_statuses.find { |status| status != :none }
   end
 
   def squares
@@ -63,6 +63,23 @@ class Board
   end
 
   private
+  def line_statuses 
+    lines_of_square_statuses.map do |line|
+      next :x if line_of?(line, :x)
+      next :o if line_of?(line, :o)
+      :none
+    end
+  end
+
+  def lines_of_square_statuses
+    @lines.all.map { |line| line.map(&method(:square_status)) }
+  end
+
+
+  def line_of?(line, status)
+    line.all? { |square_status| square_status == status }
+  end
+
   def square_empty?(square)
     !moves.include?(square)
   end

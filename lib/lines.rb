@@ -33,11 +33,11 @@ class Lines
     end
   end
 
-  private
   def all
     rows + columns + diagonals
   end
 
+  private
   def rows
     (1..total_squares)
       .step(size)
