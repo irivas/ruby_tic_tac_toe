@@ -1,6 +1,6 @@
-require "mini_maxable"
+require "mini_max"
 
-class AlphaBeta < MiniMaxable
+class AlphaBeta < MiniMax
 
   MAX_VALUE = 10000
   MIN_VALUE = -10000
