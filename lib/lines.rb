@@ -3,47 +3,17 @@ class Lines
     @board = board
   end
 
-  def statuses 
-    as_square_statuses.map do |line|
-      next :x if line_of?(line, :x)
-      next :o if line_of?(line, :o)
-      :none
-    end
-  end
-
-  def line_of?(line, status)
-    line.all? { |square_status| square_status == status }
-  end
-
-  def as_square_statuses
-    all.map { |line| line.map(&@board.method(:square_status)) }
-  end
-
-  def winner?
-    winner != nil
-  end
-
-  def winner
-    statuses.find { |status| status != :none }
-  end
-
-  def rows_as_square_numbers_and_statuses
-    rows.map do |line| 
-      line.map { |square_number| [square_number, @board.square_status(square_number)] } 
-    end
-  end
-
   def all
     rows + columns + diagonals
   end
 
-  private
   def rows
     (1..total_squares)
       .step(size)
       .map(&method(:row))
   end
-
+  
+  private
   def row(start)
     (start...start + size).to_a
   end

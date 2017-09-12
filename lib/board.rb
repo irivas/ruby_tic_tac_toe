@@ -47,7 +47,9 @@ class Board
   end
 
   def rows_as_square_numbers_and_statuses
-    @lines.rows_as_square_numbers_and_statuses
+    @lines.rows.map do |line| 
+      line.map { |square_number| [square_number, square_status(square_number)] } 
+    end
   end
 
   def next_player
