@@ -7,7 +7,7 @@ require "game_builder"
 require "board"
 require "human_player"
 require "computer_player"
-require "mini_max"
+require "alpha_beta"
 require "game_over_ui"
 
 class GameRunner < UI
@@ -48,7 +48,7 @@ class GameRunner < UI
   end
 
   def computer_player
-    ComputerPlayer.new(player_ui_builder, MiniMax, sleep_time: 0.5, max_depth: 4)
+    ComputerPlayer.new(player_ui_builder, AlphaBeta, sleep_time: 0.5, max_depth: 4)
   end
 
   def player_ui_builder
