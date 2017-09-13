@@ -20,4 +20,4 @@ Run `rspec` to run all the tests. Run `rspec -t ~speed:slow` to filter out slow 
 Alternatively run `bundle exec guard` to automatically run the tests on file change (note: this
 doesn't run tests tagged as `speed: 'slow'`.
 
-Run `ruby tic_tac_toe.rb` to play game
+Run `bin/tic_tac_toe` to play game (n.b. `bin/tic_tac_toe` must be executable).
