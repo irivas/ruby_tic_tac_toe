@@ -15,7 +15,7 @@ describe Board do
 
     it "returns new Board instance (Board is immutable)" do
       boardA = build_board()
-      boardB = build_board(1)
+      boardB = boardA.move(1)
       expect(boardA).not_to eq(boardB)
       expect(boardA.moves).to eq([])
       expect(boardB.moves).to eq([1])

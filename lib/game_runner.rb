@@ -17,6 +17,7 @@ class GameRunner < UI
   end
 
   private
+  
   def play_again?
     GameOverUI.new(input: @input, output: @output).request_play_again
   end
