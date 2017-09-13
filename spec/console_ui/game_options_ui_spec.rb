@@ -1,4 +1,4 @@
-require "game_options_ui"
+require "console_ui/game_options_ui"
 
 describe GameOptionsUI do
   describe "#request_game_type" do

@@ -1,5 +1,5 @@
-require "game_options_ui"
-require "game_options"
+require "console_ui/game_options_ui"
+require "core/game_options"
 
 describe GameOptions do
   describe "#run" do

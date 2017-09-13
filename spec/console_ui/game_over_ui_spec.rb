@@ -1,4 +1,4 @@
-require "game_over_ui"
+require "console_ui/game_over_ui"
 
 describe GameOverUI do
   describe "#request_play_again" do

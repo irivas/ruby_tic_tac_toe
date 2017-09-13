@@ -1,5 +1,5 @@
-require "alpha_beta"
-require "mini_max"
+require "core/alpha_beta"
+require "core/mini_max"
 
 describe "MiniMaxable Algorithms" do
   describe "#execute" do

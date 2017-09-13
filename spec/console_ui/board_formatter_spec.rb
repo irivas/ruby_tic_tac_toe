@@ -1,5 +1,5 @@
-require "board_formatter"
-require "board"
+require "console_ui/board_formatter"
+require "core/board"
 
 describe BoardFormatter do
   describe "#format" do

@@ -1,4 +1,4 @@
-require "player"
+require "core/player"
 
 class HumanPlayer < Player
   def request_move(board)

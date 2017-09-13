@@ -1,4 +1,4 @@
-require "player"
+require "core/player"
 
 class ComputerPlayer < Player
   def initialize(ui_builder, algorithm, sleep_time: 0, max_depth: 3)

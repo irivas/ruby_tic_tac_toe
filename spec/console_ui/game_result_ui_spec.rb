@@ -1,5 +1,5 @@
-require "game_result_ui_builder"
-require "board"
+require "console_ui/game_result_ui_builder"
+require "core/board"
 
 describe GameResultUI do
   describe "#report_result" do

@@ -1,5 +1,5 @@
-require "ui_builder"
-require "game_result_ui"
+require "console_ui/ui_builder"
+require "console_ui/game_result_ui"
 
 class GameResultUIBuilder < UIBuilder
   def build

@@ -1,5 +1,5 @@
-require "ui_builder"
-require "player_ui"
+require "console_ui/ui_builder"
+require "console_ui/player_ui"
 
 class PlayerUIBuilder < UIBuilder
   def build

@@ -1,9 +1,9 @@
-require "game_builder"
-require "game"
-require "human_player"
-require "player_ui_builder"
-require "board"
-require "game_result_ui_builder"
+require "core/game_builder"
+require "core/game"
+require "core/board"
+require "core/human_player"
+require "console_ui/player_ui_builder"
+require "console_ui/game_result_ui_builder"
 
 describe Game do
   describe "#run" do

@@ -1,4 +1,4 @@
-require "board"
+require "core/board"
 
 describe Board do
   describe "#moves" do

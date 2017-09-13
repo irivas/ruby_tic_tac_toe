@@ -1,6 +1,6 @@
-require "player_ui_builder"
-require "board"
-require "board_formatter"
+require "console_ui/player_ui_builder"
+require "console_ui/board_formatter"
+require "core/board"
 
 describe PlayerUI do
   describe "#request_move" do

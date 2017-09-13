@@ -1,4 +1,4 @@
-require "ui"
+require "console_ui/ui"
 
 class GameResultUI < UI
   def report_result

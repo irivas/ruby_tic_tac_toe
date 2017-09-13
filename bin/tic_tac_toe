@@ -2,6 +2,6 @@
 
 $LOAD_PATH.unshift(File.expand_path("../../lib", __FILE__))
 
-require "game_runner"
+require "console_ui/game_runner"
 
 GameRunner.new.run

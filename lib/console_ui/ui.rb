@@ -1,4 +1,4 @@
-require "board_formatter"
+require "console_ui/board_formatter"
 
 class UI
   def initialize(board: nil, input: $stdin, output: $stdout)

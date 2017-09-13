@@ -1,4 +1,4 @@
-require "board"
+require "core/board"
 
 class Game
   def initialize(player_x:, player_o:, board:, result_ui_builder:)

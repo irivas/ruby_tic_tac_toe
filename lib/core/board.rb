@@ -1,4 +1,4 @@
-require "lines"
+require "core/lines"
 
 class Board
 

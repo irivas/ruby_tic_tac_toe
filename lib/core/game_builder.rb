@@ -1,4 +1,4 @@
-require "game"
+require "core/game"
 
 class GameBuilder
   def initialize

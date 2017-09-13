@@ -1,6 +1,6 @@
-require "player_ui_builder"
-require "player_ui"
-require "board"
+require "console_ui/player_ui_builder"
+require "console_ui/player_ui"
+require "core/board"
 
 describe PlayerUIBuilder do
   describe "#build" do

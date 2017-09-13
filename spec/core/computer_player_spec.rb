@@ -1,7 +1,7 @@
-require "computer_player"
-require "player_ui_builder"
-require "board_formatter"
-require "mini_max"
+require "core/computer_player"
+require "core/mini_max"
+require "console_ui/player_ui_builder"
+require "console_ui/board_formatter"
 
 describe ComputerPlayer do
   describe "#request_move" do

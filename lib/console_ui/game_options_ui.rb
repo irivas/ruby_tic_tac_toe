@@ -1,4 +1,4 @@
-require 'ui'
+require "console_ui/ui"
 
 class GameOptionsUI < UI
   def request_game_type

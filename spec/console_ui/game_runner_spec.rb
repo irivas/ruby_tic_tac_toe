@@ -1,4 +1,4 @@
-require "game_runner"
+require "console_ui/game_runner"
 
 describe GameRunner do
   describe "#run" do

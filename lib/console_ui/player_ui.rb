@@ -1,4 +1,4 @@
-require "ui"
+require "console_ui/ui"
 
 class PlayerUI < UI
   def request_move

@@ -1,4 +1,4 @@
-require "ui"
+require "console_ui/ui"
 
 class GameOverUI < UI
   def request_play_again

@@ -1,4 +1,4 @@
-require "mini_max"
+require "core/mini_max"
 
 class AlphaBeta < MiniMax
 
