@@ -19,8 +19,7 @@ class Lines
   end
 
   def columns
-    (1..size)
-      .map(&method(:column))
+    (1..size).map(&method(:column))
   end
 
   def column(start)
