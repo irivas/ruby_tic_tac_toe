@@ -1,11 +1,13 @@
-class UIBuilder
-  def initialize(input: $stdin, output: $stdout)
-    @input = input
-    @output = output
-  end
+module ConsoleUI
+  class UIBuilder
+    def initialize(input: $stdin, output: $stdout)
+      @input = input
+      @output = output
+    end
 
-  def set_board(board)
-    @board = board
-    self
+    def set_board(board)
+      @board = board
+      self
+    end
   end
 end

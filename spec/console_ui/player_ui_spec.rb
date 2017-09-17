@@ -2,7 +2,7 @@ require "console_ui/player_ui_builder"
 require "console_ui/board_formatter"
 require "core/board"
 
-describe PlayerUI do
+describe ConsoleUI::PlayerUI do
   describe "#request_move" do
     it "sends 'clear' call to system" do
       player_ui = build_ui(build_board, "1\n")
@@ -12,7 +12,7 @@ describe PlayerUI do
 
     it "prints current board state" do
       board = build_board
-      formatted_board = BoardFormatter.new(board).format
+      formatted_board = ConsoleUI::BoardFormatter.new(board).format
       build_ui(board, "1\n").request_move
       expect(@output.string).to match(formatted_board)
     end
@@ -46,7 +46,7 @@ end
 def build_ui(board, input = "")
   @input = StringIO.new(input)
   @output = StringIO.new
-  PlayerUIBuilder
+  ConsoleUI::PlayerUIBuilder
     .new(input: @input, output: @output)
     .set_board(board)
     .build

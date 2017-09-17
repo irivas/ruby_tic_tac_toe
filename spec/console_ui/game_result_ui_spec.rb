@@ -1,11 +1,12 @@
 require "console_ui/game_result_ui_builder"
+require "console_ui/board_formatter"
 require "core/board"
 
-describe GameResultUI do
+describe ConsoleUI::GameResultUI do
   describe "#report_result" do
     it "prints board" do
       game_result_ui(o_winning_board).report_result
-      formatted_board = BoardFormatter.new(o_winning_board).format
+      formatted_board = ConsoleUI::BoardFormatter.new(o_winning_board).format
       expect(@output.string).to match(formatted_board)
     end
 
@@ -29,7 +30,7 @@ describe GameResultUI do
     @input = StringIO.new
     @output = StringIO.new
     @board = board
-    GameResultUIBuilder
+    ConsoleUI::GameResultUIBuilder
       .new(input: @input, output: @output)
       .set_board(@board)
       .build

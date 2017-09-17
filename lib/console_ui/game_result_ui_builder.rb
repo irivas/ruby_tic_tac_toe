@@ -1,8 +1,10 @@
 require "console_ui/ui_builder"
 require "console_ui/game_result_ui"
 
-class GameResultUIBuilder < UIBuilder
-  def build
-    GameResultUI.new(board: @board, input: @input, output: @output)
+module ConsoleUI
+  class GameResultUIBuilder < ConsoleUI::UIBuilder
+    def build
+      ConsoleUI::GameResultUI.new(board: @board, input: @input, output: @output)
+    end
   end
 end
