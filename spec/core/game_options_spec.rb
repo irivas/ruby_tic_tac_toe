@@ -19,7 +19,7 @@ describe GameOptions do
   def game_options(input = "")
     @input = StringIO.new(input)
     @output = StringIO.new
-    ui = GameOptionsUI.new(input: @input, output: @output)
+    ui = ConsoleUI::GameOptionsUI.new(input: @input, output: @output)
     @game_options = GameOptions.new(ui)
     @game_options.run
   end
