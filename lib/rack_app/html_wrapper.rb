@@ -30,7 +30,7 @@ module RackApp
       StartBody,
       @body_contents,
       EndBody,
-      EndDoc].flatten.join("")
+      EndDoc].flatten
     end
 
     StartDoc = ["<html>"]

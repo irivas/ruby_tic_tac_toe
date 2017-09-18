@@ -6,7 +6,7 @@ describe RackApp::HTMLWrapper do
     let(:html_doc) { RackApp::HTMLWrapper.new.build }
 
     it "builds a blank html page" do
-      expect(html_doc.body).to match(/<html><head><\/head><body><\/body><\/html>/)
+      expect(html_doc.body.join("")).to match(/<html><head><\/head><body><\/body><\/html>/)
     end
 
     it "builds standard html headers" do
@@ -24,7 +24,7 @@ describe RackApp::HTMLWrapper do
     }
 
     it "adds content to body in order" do
-      expect(html_doc.body).to match(/<body>Some simple content. Some more content.<\/body>/)
+      expect(html_doc.body.join("")).to match(/<body>Some simple content. Some more content.<\/body>/)
     end
   end
 
@@ -37,7 +37,7 @@ describe RackApp::HTMLWrapper do
     }
 
     it "adds content to body in order" do
-      expect(html_doc.body).to match(
+      expect(html_doc.body.join("")).to match(
         /<head><script src="a\/simple\/script\/include"><\/script><\/head>/)
     end
   end
