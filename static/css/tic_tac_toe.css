@@ -9,6 +9,7 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -42,3 +43,30 @@ body {
   border-bottom: 1px solid black;
 }
 
+.result_message {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result_message > .headline {
+  font-size: 3em;
+}
+
+.result_message > .play_again {
+  font-size: 1em;
+}
+
+.result_message > .play_again a {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

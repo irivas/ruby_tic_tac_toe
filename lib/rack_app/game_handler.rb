@@ -1,6 +1,7 @@
 require "rack"
 require "core/board"
 require "rack_app/player_ui"
+require "rack_app/game"
 
 module RackApp
   class GameHandler
@@ -13,13 +14,16 @@ module RackApp
     end
 
     def handler(request)
-      unless active_game?(request.params)
-        board = Board.new 
-      else
-        board = Board.new(get_moves(request.params))
-                     .move(get_move(request.params))
-      end
-      RackApp::PlayerUI.new(board).request_move
+      build_game(request.params).run
+    end
+
+    private
+
+    def build_game(params)
+      RackApp::Game.new(
+        moves: get_moves(params), 
+        move: get_move(params), 
+        is_active_game: active_game?(params))
     end
 
     def active_game?(params)
