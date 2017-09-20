@@ -7,7 +7,7 @@ describe RackApp::Game do
       RackApp::Game.new(
         is_active_game: false,
         player_x_type: :human,
-        player_o_type: :human)
+        player_o_type: :computer)
     end
 
     it "prints empty board" do
@@ -16,7 +16,7 @@ describe RackApp::Game do
     end
 
     it "sets sets x and o player types to human" do
-      response_contains_player_type_form_data(game.run, x: :human, o: :human)
+      response_contains_player_type_form_data(game.run, x: :human, o: :computer)
     end
   end
 
@@ -72,10 +72,11 @@ describe RackApp::Game do
     end
 
     it "prints empty board" do
-      response_contains_board_output(game.run, [])
+      response = game.run
+      response_contains_board_output(response, [])
     end
 
-    it "prints form with x's first move" do
+    it "prints form with x's first move (x)" do
       response = game.run
       expect(response.body.join("")).to include(
         "<input type=\"hidden\" id=\"move\" name=\"move\" value=\"1\">")
@@ -83,6 +84,32 @@ describe RackApp::Game do
 
     it "sets next_player input as computer" do
       response_contains_player_type_form_data(game.run, x: :computer, o: :human)
+    end
+  end
+
+  context "computer player's first move (o)" do
+    let(:game) do
+      RackApp::Game.new(
+        is_active_game: true,
+        moves: [],
+        move: 1,
+        player_x_type: :human,
+        player_o_type: :computer)
+    end
+
+    it "prints board with first move" do
+      response = game.run
+      response_contains_board_output(response, [1])
+    end
+
+    it "prints form with o's first move" do
+      response = game.run
+      expect(response.body.join("")).to include(
+        "<input type=\"hidden\" id=\"move\" name=\"move\" value=\"5\">")
+    end
+
+    it "sets next_player input as computer" do
+      response_contains_player_type_form_data(game.run, x: :human, o: :computer)
     end
   end
 

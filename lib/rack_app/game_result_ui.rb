@@ -38,7 +38,7 @@ module RackApp
         result_text,
         "</div>",
         "<div class=\"play_again\">",
-        "<a href=\"?\">",
+        "<a href=\"/index.html\">",
         "play again",
         "</a>",
         "</div>",

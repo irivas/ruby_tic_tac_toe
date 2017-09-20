@@ -27,6 +27,7 @@ module RackApp
       case path
       when /\.js$/ then "application/js"
       when /\.css$/ then "text/css"
+      when /\.html$/ then "text/html"
       else "text/plain"
       end
     end

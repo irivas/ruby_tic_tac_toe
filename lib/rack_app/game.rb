@@ -33,7 +33,7 @@ module RackApp
     end
 
     def report_game_result
-      RackApp::GameResultUI.new(board).report_result
+      RackApp::GameResultUI.new(@board).report_result
     end
 
     def request_player_move
@@ -42,7 +42,7 @@ module RackApp
 
     def next_player 
       @player_type == :human ? 
-        HumanPlayer.new(RackApp::PlayerUIBuilder.new) : 
+        HumanPlayer.new(RackApp::PlayerUIBuilder.new, @player_options) : 
         ComputerPlayer.new(RackApp::PlayerUIBuilder.new, AlphaBeta, @player_options) 
     end
   end

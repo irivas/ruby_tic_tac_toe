@@ -6,6 +6,7 @@ describe RackApp::StaticRouteHandler do
   let(:matching_path) { "matching_file" }
   let(:matching_js_path) { "matching_file.js" }
   let(:matching_css_path) { "matching_file.css" }
+  let(:matching_html_path) { "matching_file.html" }
   let(:matching_content) { "matching content" }
   let(:missing_path) { "missing_file" }
   let(:route_handler) { RackApp::StaticRouteHandler.new(base_path) }
@@ -14,6 +15,7 @@ describe RackApp::StaticRouteHandler do
     mock_success_path(matching_path)
     mock_success_path(matching_js_path)
     mock_success_path(matching_css_path)
+    mock_success_path(matching_html_path)
     allow(File).to receive(:exists?).with(File.join(base_path, missing_path)).and_return(false)
   end
 
@@ -58,6 +60,16 @@ describe RackApp::StaticRouteHandler do
 
       expect(response.status).to eq(200)
       expect(response.headers["Content-Type"]).to eq("text/css")
+    end
+  end
+
+  context "matching html file path" do
+    it "handler returns rack response with content type header of text/html" do
+      request = build_request(matching_html_path)
+      response = route_handler.handler(request)
+
+      expect(response.status).to eq(200)
+      expect(response.headers["Content-Type"]).to eq("text/html")
     end
   end
 
