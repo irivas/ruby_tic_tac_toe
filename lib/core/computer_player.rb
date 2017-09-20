@@ -11,8 +11,9 @@ class ComputerPlayer < Player
 
   def request_move(board)
     move = select_move(board)
-    build_ui(board, @options.merge({move: move})).print_board
+    response = build_ui(board, @options.merge({move: move})).print_board
     report_move(move)
+    response
   end
 
   private
