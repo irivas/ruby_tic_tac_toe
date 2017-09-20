@@ -1,4 +1,6 @@
 (() => {
+  const COMPUTER_MOVE_DELAY = 500;
+
   const DOM_ELEMENTS = {
     form: document.getElementById("game_form"),
     next_player_type: document.getElementById("next_player_type"),
@@ -60,6 +62,6 @@
     setTimeout(() => {
       console.log("submitting form");
       DOM_ELEMENTS.form.submit();
-    }, 2000)
+    }, COMPUTER_MOVE_DELAY)
   }
 })();
