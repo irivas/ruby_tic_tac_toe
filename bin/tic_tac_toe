@@ -4,4 +4,4 @@ $LOAD_PATH.unshift(File.expand_path("../../lib", __FILE__))
 
 require "console_ui/game_runner"
 
-GameRunner.new.run
+ConsoleUI::GameRunner.new.run
