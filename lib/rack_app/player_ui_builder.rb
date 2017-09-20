@@ -7,8 +7,13 @@ module RackApp
       self
     end
 
+    def set_options(options)
+      @options = options
+      self
+    end
+
     def build
-      RackApp::PlayerUI.new(@board)
+      RackApp::PlayerUI.new(@board, @options)
     end
   end
 end

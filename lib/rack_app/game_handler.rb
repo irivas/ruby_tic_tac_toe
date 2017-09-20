@@ -23,7 +23,9 @@ module RackApp
       RackApp::Game.new(
         moves: get_moves(params), 
         move: get_move(params), 
-        is_active_game: active_game?(params))
+        is_active_game: active_game?(params),
+        player_x_type: get_player_type(:x, params),
+        player_o_type: get_player_type(:o, params))
     end
 
     def active_game?(params)
@@ -36,6 +38,10 @@ module RackApp
 
     def get_move(params)
       params["move"].to_i
+    end
+
+    def get_player_type(player, params)
+      params.fetch("player_#{player}_type", "human").to_sym
     end
   end
 end

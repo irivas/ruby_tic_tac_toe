@@ -1,22 +1,34 @@
 (() => {
   const DOM_ELEMENTS = {
     form: document.getElementById("game_form"),
+    next_player_type: document.getElementById("next_player_type"),
     squares: document.getElementsByClassName("square"),
     gameMoves: document.getElementById("moves"),
     move: document.getElementById("move")
   }
 
+  main();
 
-  squares()
-    .filter(excludeSquares(gameMoves()))
-    .forEach(activateSquare);
+  function main() {
+    isHumanPlayer() ? enableNextMoveSelection() : startFormSubmission();
+  }
+
+  function isHumanPlayer() {
+    return DOM_ELEMENTS.next_player_type.value === "human"
+  }
+
+  function enableNextMoveSelection() {
+    squares()
+      .filter(excludeSquares(gameMoves()))
+      .forEach(activateSquare);
+  }
 
   function squares() {
     return Array.from(DOM_ELEMENTS.squares);
   }
 
   function excludeSquares(gameMoves) {
-    return (square) => gameMoves.indexOf(getSquareNumber(square)) == -1;
+    return (square) => gameMoves.indexOf(getSquareNumber(square)) === -1;
   }
 
   function gameMoves() {
@@ -42,5 +54,12 @@
   function getSquareNumber(square) {
     const [number] = square.id.match(/\d+$/);
     return parseInt(number);
+  }
+
+  function startFormSubmission() {
+    setTimeout(() => {
+      console.log("submitting form");
+      DOM_ELEMENTS.form.submit();
+    }, 2000)
   }
 })();
