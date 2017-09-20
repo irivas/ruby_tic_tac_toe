@@ -6,5 +6,10 @@ module ConsoleUI
     def build
       PlayerUI.new(board: @board, input: @input, output: @output)
     end
+
+    def set_options(options)
+      @options = options
+      self
+    end
   end
 end

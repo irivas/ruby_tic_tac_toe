@@ -9,6 +9,7 @@ module ConsoleUI
     end
 
     def print_board
+      clear_screen
       @output.puts(formatted_board)
     end
 

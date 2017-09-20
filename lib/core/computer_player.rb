@@ -1,24 +1,21 @@
 require "core/player"
 
 class ComputerPlayer < Player
-  def initialize(ui_builder, algorithm, sleep_time: 0, max_depth: 3)
+  def initialize(ui_builder, algorithm, options = {})
     super(ui_builder)
     @algorithm = algorithm
-    @sleep_time = sleep_time
-    @max_depth = max_depth
+    @options = options
+    @sleep_time = options.fetch(:sleep_time, 0)
+    @max_depth = options.fetch(:max_depth, 4)
   end
 
   def request_move(board)
-    print_board(board)
-    select_move(board)
+    move = select_move(board)
+    build_ui(board, @options.merge({move: move})).print_board
+    report_move(move)
   end
 
   private
-  def print_board(board)
-    ui = build_ui(board)
-    ui.clear_screen
-    ui.print_board
-  end
 
   def select_move(board)
     sleep(@sleep_time)

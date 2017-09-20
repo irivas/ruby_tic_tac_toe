@@ -3,7 +3,6 @@ require "console_ui/ui"
 module ConsoleUI
   class PlayerUI < ConsoleUI::UI
     def request_move
-      clear_screen
       print_board
       get_player_move
     end

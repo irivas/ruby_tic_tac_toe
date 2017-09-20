@@ -4,14 +4,24 @@ require "core/board"
 require "core/human_player"
 
 describe HumanPlayer do
-  describe "#request_move" do
-    it "requests move through provided ui and returns player's move" do
-      ui_builder = build_player_ui_builder("1\n")
-      player = HumanPlayer.new(ui_builder)
-      board_output = ConsoleUI::BoardFormatter.new(build_board(1)).format
+  let(:ui_builder) { build_player_ui_builder("1\n") }
+  let(:move_receiver) do
+    (Struct.new(:last_move) do
+      def report_move(move)
+        self.last_move = move
+      end
+    end).new
+  end
+  let(:player) { HumanPlayer.new(ui_builder) }
+  let(:expected_output) { ConsoleUI::BoardFormatter.new(build_board(1)).format }
 
-      expect(player.request_move(build_board)).to eq(1)
-      expect(@output.string).to match(board_output)
+  context "move requested" do
+    it "builds ui and returns valid move provided by the user" do
+      player.move_reporter = lambda(&move_receiver.method(:report_move))
+
+      player.request_move(build_board)
+      expect(@output.string).to match(expected_output)
+      expect(move_receiver.last_move).to eq(1)
     end
   end
 

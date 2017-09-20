@@ -2,6 +2,8 @@ require "core/player"
 
 class HumanPlayer < Player
   def request_move(board)
-    build_ui(board).request_move
+    move = build_ui(board).request_move
+    report_move(move)
+    move
   end
 end
