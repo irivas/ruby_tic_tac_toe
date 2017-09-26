@@ -13,7 +13,7 @@ module RackApp
       moves = options[:moves]
       move = options[:move]
       is_active_game = options[:is_active_game]
-
+      
       @board = is_active_game ? build_board(moves, move) : Board.new
       @player_type = options.fetch("player_#{@board.next_player}_type".to_sym, :human)
       @player_options = {

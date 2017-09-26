@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 gem "rack"
+gem "nokogiri"
 
 group :test, :development do
   gem "rspec"
