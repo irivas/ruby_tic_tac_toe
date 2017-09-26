@@ -8,6 +8,7 @@ group :test, :development do
   gem "rake"
   gem "pry"
   gem "pry-nav"
+  gem "simplecov"
 end
 
 group :development do
