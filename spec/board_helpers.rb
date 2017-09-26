@@ -1,4 +1,4 @@
-require "board"
+require "core/board"
 
 module BoardHelpers
   def build_board(*squares)

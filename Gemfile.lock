@@ -25,7 +25,10 @@ GEM
       ruby_dep (~> 1.2)
     lumberjack (1.0.12)
     method_source (0.8.2)
+    mini_portile2 (2.3.0)
     nenv (0.3.0)
+    nokogiri (1.8.1)
+      mini_portile2 (~> 2.3.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
@@ -33,6 +36,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-nav (0.2.4)
+      pry (>= 0.9.10, < 0.11.0)
+    rack (2.0.3)
     rake (12.0.0)
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
@@ -61,6 +67,10 @@ PLATFORMS
 DEPENDENCIES
   guard
   guard-rspec
+  nokogiri
+  pry
+  pry-nav
+  rack
   rake
   rspec
 
