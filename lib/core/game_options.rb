@@ -8,11 +8,11 @@ class GameOptions
     self
   end
 
-  def player_x
-    @game_type.player_x
+  def player_x_type
+    @game_type.player_x_type
   end
 
-  def player_o
-    @game_type.player_o
+  def player_o_type
+    @game_type.player_o_type
   end
 end

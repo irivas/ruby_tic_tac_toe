@@ -9,11 +9,12 @@ require "core/board"
 require "core/human_player"
 require "core/computer_player"
 require "core/alpha_beta"
+require "console_ui/game_instance_runner"
 
 module ConsoleUI
   class GameRunner < ConsoleUI::UI
     def run
-      game(game_options).run
+      game(game_options)
       GameRunner.new.run if play_again?
     end
 
@@ -32,13 +33,22 @@ module ConsoleUI
     end
 
     def game(options)
-      GameBuilder
-        .new
-        .add_player_x(player(options.player_x))
-        .add_player_o(player(options.player_o))
-        .add_board(Board.new)
-        .add_result_ui_builder(game_result_ui_builder)
-        .build
+      game_instance_runner = build_game_instance_runner(options)
+      loop do
+        is_game_over = game_instance_runner.next
+        if is_game_over
+          game_instance_runner.report_result
+          break
+        end
+      end
+    end
+
+    def build_game_instance_runner(game_options)
+      ConsoleUI::GameInstanceRunner.new(
+        input: @input, 
+        output: @output,
+        player_x_type: game_options.player_x_type,
+        player_o_type: game_options.player_o_type)
     end
 
     def player(player_type)

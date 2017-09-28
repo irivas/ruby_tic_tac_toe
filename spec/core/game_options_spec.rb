@@ -5,14 +5,14 @@ describe GameOptions do
   describe "#run" do
     it "sets player_x and player_o to human for 'Human vs Human' game type" do
       game_options("1\n")
-      expect(@game_options.player_x).to be :human
-      expect(@game_options.player_o).to be :human
+      expect(@game_options.player_x_type).to be :human
+      expect(@game_options.player_o_type).to be :human
     end
 
     it "sets player_x to human and player_o to computer for 'Human vs Computer' game type" do
       game_options("2\n")
-      expect(@game_options.player_x).to be :human
-      expect(@game_options.player_o).to be :computer
+      expect(@game_options.player_x_type).to be :human
+      expect(@game_options.player_o_type).to be :computer
     end
   end
 
