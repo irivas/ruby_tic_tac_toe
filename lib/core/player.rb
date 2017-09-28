@@ -1,9 +1,11 @@
 class Player
 
-  attr_writer :move_reporter
-
   def initialize(ui_builder)
     @ui_builder = ui_builder
+  end
+
+  def add_move_reporter(move_reporter)
+    @move_reporter = move_reporter
   end
 
   private

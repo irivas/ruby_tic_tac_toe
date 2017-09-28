@@ -22,8 +22,8 @@ module ConsoleUI
 
     def setup_players
       move_reporter = lambda(&method(:update_board))
-      @player_x.move_reporter = move_reporter
-      @player_o.move_reporter = move_reporter
+      @player_x.add_move_reporter(move_reporter)
+      @player_o.add_move_reporter(move_reporter)
     end
 
     def update_board(move)

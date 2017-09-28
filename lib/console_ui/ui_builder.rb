@@ -1,8 +1,8 @@
 module ConsoleUI
   class UIBuilder
-    def initialize(input: $stdin, output: $stdout)
-      @input = input
-      @output = output
+    def initialize(options = {})
+      @input = options.fetch(:input, $stdin);
+      @output = options.fetch(:output, $stdout);
     end
 
     def set_board(board)

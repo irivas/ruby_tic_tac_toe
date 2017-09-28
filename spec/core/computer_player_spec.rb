@@ -17,7 +17,8 @@ describe ComputerPlayer do
 
   context "move requested" do
     it "builds ui and gets move from provided algorithm and returns player's move" do
-      player.move_reporter = lambda(&move_receiver.method(:report_move))
+      move_reporter = lambda(&move_receiver.method(:report_move))
+      player.add_move_reporter(move_reporter)
       player.request_move(board)
 
       expect(@output.string).to match(expected_output)

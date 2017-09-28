@@ -17,7 +17,8 @@ describe HumanPlayer do
 
   context "move requested" do
     it "builds ui and returns valid move provided by the user" do
-      player.move_reporter = lambda(&move_receiver.method(:report_move))
+      move_reporter = lambda(&move_receiver.method(:report_move))
+      player.add_move_reporter(move_reporter)
 
       player.request_move(build_board)
       expect(@output.string).to match(expected_output)

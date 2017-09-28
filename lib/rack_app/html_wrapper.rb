@@ -1,5 +1,9 @@
+require "rack"
+
 module RackApp
   class HTMLWrapper
+    Headers = { "Content-Type" => "text/html" }
+    Status = 200
 
     def initialize
       @head_contents = []
@@ -17,7 +21,10 @@ module RackApp
     end
 
     def build
-      HTML.new(build_body)
+      Rack::Response.new(
+        build_body,
+        Status,
+        Headers)
     end
 
     private 
@@ -39,20 +46,5 @@ module RackApp
     StartBody = ["<body>"]
     EndBody = ["</body>"]
     EndDoc = ["</html>"]
-
-    class HTML
-
-      attr_reader :body
-
-      def initialize(body)
-        @body = body
-      end
-
-      def headers
-        Headers
-      end
-
-      Headers = { "Content-Type" => "text/html" }
-    end
   end
 end

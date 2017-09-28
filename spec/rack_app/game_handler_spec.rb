@@ -1,7 +1,7 @@
 require "ostruct"
 require "rack"
 require "rack_app/game_handler"
-require "rack_app/rack_router.rb"
+require "rack_app/rack_router"
 
 describe RackApp::GameHandler do
   let(:game_path) { "/tic-tac-toe" }
@@ -38,7 +38,7 @@ describe RackApp::GameHandler do
     end
   end
 
-  context "with a GET request to /tic-tac-toe?player_x_type=computer&player_o_type=computer" do
+  context "with a GET request to /tic-tac-toe?player_x_type=computer&player_o_type=computer", speed: :slow  do
     let(:body) { app.get(game_path + "?player_x_type=computer&player_o_type=computer").body }
 
     it "prints empty board and form" do
@@ -51,12 +51,12 @@ describe RackApp::GameHandler do
   end
 
   def body_contains_player_type_form_data(body, x:, o:, next_player:)
-      expect(body).to include(
-        "<input type=\"hidden\" id=\"next_player_type\" name=\"next_player_type\" value=\"#{next_player}\">")
-      expect(body).to include(
-        "<input type=\"hidden\" id=\"player_x_type\" name=\"player_x_type\" value=\"#{x}\">")
-      expect(body).to include(
-        "<input type=\"hidden\" id=\"player_o_type\" name=\"player_o_type\" value=\"#{o}\">")
+    expect(body).to include(
+      "<input type=\"hidden\" id=\"next_player_type\" name=\"next_player_type\" value=\"#{next_player}\">")
+    expect(body).to include(
+      "<input type=\"hidden\" id=\"player_x_type\" name=\"player_x_type\" value=\"#{x}\">")
+    expect(body).to include(
+      "<input type=\"hidden\" id=\"player_o_type\" name=\"player_o_type\" value=\"#{o}\">")
   end
 
   def build_board_html(board)
