@@ -41,13 +41,14 @@ describe ConsoleUI::PlayerUI do
       expect(@output.string).to match(/Boom: invalid input/)
     end
   end
+  
+  def build_ui(board, input = "")
+    @input = StringIO.new(input)
+    @output = StringIO.new
+    ConsoleUI::PlayerUIBuilder
+      .new(input: @input, output: @output)
+      .set_board(board)
+      .build
+  end
 end
 
-def build_ui(board, input = "")
-  @input = StringIO.new(input)
-  @output = StringIO.new
-  ConsoleUI::PlayerUIBuilder
-    .new(input: @input, output: @output)
-    .set_board(board)
-    .build
-end
