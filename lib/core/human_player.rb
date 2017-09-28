@@ -1,5 +1,5 @@
 module Core
-  class SimpleHumanPlayer
+  class HumanPlayer
     def type 
       :human 
     end

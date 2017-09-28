@@ -31,7 +31,7 @@ describe Core::Game do
     let(:game) { Core::Game.new(player_x_type: :human, player_o_type: :human) }
     
     it "returns a simple human player" do
-      expect(game.next_player).to be_a_kind_of(Core::SimpleHumanPlayer)
+      expect(game.next_player).to be_a_kind_of(Core::HumanPlayer)
     end
   end
 
@@ -39,7 +39,7 @@ describe Core::Game do
     let(:game) { Core::Game.new(player_x_type: :computer, player_o_type: :human) }
 
     it "returns a simple computer player" do
-      expect(game.next_player).to be_a_kind_of(Core::SimpleComputerPlayer)
+      expect(game.next_player).to be_a_kind_of(Core::ComputerPlayer)
     end
   end
 end

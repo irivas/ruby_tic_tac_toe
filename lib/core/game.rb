@@ -1,6 +1,6 @@
 require "core/board"
-require "core/simple_human_player"
-require "core/simple_computer_player"
+require "core/human_player"
+require "core/computer_player"
 
 module Core
   class Game
@@ -43,11 +43,11 @@ module Core
     end
 
     def build_computer_player
-      Core::SimpleComputerPlayer.new
+      Core::ComputerPlayer.new
     end
     
     def build_human_player
-      Core::SimpleHumanPlayer.new
+      Core::HumanPlayer.new
     end
   end
 end

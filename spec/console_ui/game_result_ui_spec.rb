@@ -1,8 +1,8 @@
-require "console_ui/simple_game_result_ui"
+require "console_ui/game_result_ui"
 require "console_ui/board_formatter"
 require "core/game"
 
-describe ConsoleUI::SimpleGameResultUI do
+describe ConsoleUI::GameResultUI do
   context "completed game: X wins" do
     let(:board) { x_winning_board }
     let(:game) { Core::Game.new(player_x_type: :human, player_o_type: :human, board: board) }
@@ -58,6 +58,6 @@ describe ConsoleUI::SimpleGameResultUI do
 
   def build_game_result_ui(game)
     @output = StringIO.new
-    ConsoleUI::SimpleGameResultUI.new(game: game, output: @output)
+    ConsoleUI::GameResultUI.new(game: game, output: @output)
   end
 end

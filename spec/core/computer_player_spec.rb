@@ -1,9 +1,9 @@
-require "core/simple_computer_player"
+require "core/computer_player"
 require "core/alpha_beta"
 require "core/board"
 
-describe Core::SimpleComputerPlayer do
-  let(:player) { Core::SimpleComputerPlayer.new(max_depth: 1) }
+describe Core::ComputerPlayer do
+  let(:player) { Core::ComputerPlayer.new(max_depth: 1) }
 
   it "has type of :computer" do
     expect(player.type).to be :computer

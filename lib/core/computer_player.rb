@@ -1,8 +1,7 @@
 require "core/alpha_beta"
 
 module Core
-
-  class SimpleComputerPlayer
+  class ComputerPlayer
     
     DefaultSleepTime = 0.5
     

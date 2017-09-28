@@ -1,7 +1,7 @@
 require "console_ui/board_formatter"
 
 module ConsoleUI
-  class SimpleGameResultUI
+  class GameResultUI
     def initialize(options)
       @game = options[:game]
       @output = options[:output]

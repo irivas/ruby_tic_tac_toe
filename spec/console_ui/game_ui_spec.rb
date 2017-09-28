@@ -33,7 +33,7 @@ describe ConsoleUI::GameUI do
   context "game with computer player next" do
     let(:x_move) { 5 }
     let(:computer_player_double) do
-      double = instance_double(Core::SimpleComputerPlayer)
+      double = instance_double(Core::ComputerPlayer)
       allow(double).to receive(:get_move).and_return(x_move)
       allow(double).to receive(:type).and_return(:computer)
       double

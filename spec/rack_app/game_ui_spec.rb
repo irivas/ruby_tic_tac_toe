@@ -1,4 +1,4 @@
-require "core/simple_computer_player"
+require "core/computer_player"
 require "core/game"
 require "rack_app/game_ui"
 require "rack_app/ui_helpers"
@@ -40,7 +40,7 @@ describe RackApp::GameUI do
   context "with a new computer vs human game" do
     let(:computer_move) { 5 }
     let(:computer_player_double) do 
-      double = instance_double(Core::SimpleComputerPlayer)
+      double = instance_double(Core::ComputerPlayer)
       allow(double).to receive(:get_move).and_return(computer_move)
       allow(double).to receive(:type).and_return(:computer)
       double 

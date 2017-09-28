@@ -1,6 +1,6 @@
 require "core/game"
 require "console_ui/game_ui"
-require "console_ui/simple_game_result_ui"
+require "console_ui/game_result_ui"
 
 module ConsoleUI
   class GameInstanceRunner
@@ -36,7 +36,7 @@ module ConsoleUI
     end
 
     def build_game_result_ui
-      ConsoleUI::SimpleGameResultUI.new(game: game, output: @output)
+      ConsoleUI::GameResultUI.new(game: game, output: @output)
     end
   end
 end
