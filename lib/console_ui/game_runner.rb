@@ -2,9 +2,8 @@ require "console_ui/ui"
 require "console_ui/game_options_ui"
 require "console_ui/game_over_ui"
 require "console_ui/game_options"
-require "core/board"
-require "core/alpha_beta"
 require "console_ui/game_instance_runner"
+require "matts_tictactoe_core"
 
 module ConsoleUI
   class GameRunner < ConsoleUI::UI

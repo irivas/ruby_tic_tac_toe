@@ -1,4 +1,4 @@
-require "core/game"
+require "matts_tictactoe_core"
 require "console_ui/game_ui"
 require "console_ui/game_result_ui"
 
@@ -25,7 +25,7 @@ module ConsoleUI
     private
 
     def build_game(options)
-      Core::Game.new(
+      MattsTictactoeCore::Game.new(
         player_x_type: options[:player_x_type], 
         player_o_type: options[:player_o_type])
     end

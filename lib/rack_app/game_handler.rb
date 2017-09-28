@@ -1,5 +1,5 @@
+require "matts_tictactoe_core"
 require "rack"
-require "core/game"
 require "rack_app/game_ui"
 require "rack_app/game_result_ui"
 
@@ -21,7 +21,7 @@ module RackApp
     private
 
     def build_game(params)
-      Core::Game.new(
+      MattsTictactoeCore::Game.new(
         player_x_type: get_player_type(:x, params),
         player_o_type: get_player_type(:o, params),
         board: get_board(params))
@@ -30,7 +30,7 @@ module RackApp
     def get_board(params)
       moves = get_moves(params)
       move = get_move(params)
-      board = Board.new(moves)
+      board = MattsTictactoeCore::Board.new(moves)
       active_game?(params) ? board.move(move) : board
     end
 

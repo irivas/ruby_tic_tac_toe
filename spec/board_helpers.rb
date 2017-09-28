@@ -1,8 +1,6 @@
-require "core/board"
-
 module BoardHelpers
   def build_board(*squares)
-    squares.reduce(Board.new) { |board, square| board.move(square) }
+    squares.reduce(MattsTictactoeCore::Board.new) { |board, square| board.move(square) }
   end
 
   def drawn_board

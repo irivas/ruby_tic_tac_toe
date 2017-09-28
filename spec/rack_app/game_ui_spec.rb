@@ -1,5 +1,4 @@
-require "core/computer_player"
-require "core/game"
+require "matts_tictactoe_core"
 require "rack_app/game_ui"
 require "rack_app/ui_helpers"
 
@@ -7,7 +6,7 @@ RSpec.configure { |config| config.include(UIHelpers) }
 
 describe RackApp::GameUI do
   context "with a new human vs computer game" do
-    let(:game) { Core::Game.new(player_x_type: :human, player_o_type: :computer) }
+    let(:game) { MattsTictactoeCore::Game.new(player_x_type: :human, player_o_type: :computer) }
     let(:game_output) { RackApp::GameUI.new(game).build }
     let(:html) { game_output.body.join("") }
 
@@ -40,12 +39,13 @@ describe RackApp::GameUI do
   context "with a new computer vs human game" do
     let(:computer_move) { 5 }
     let(:computer_player_double) do 
-      double = instance_double(Core::ComputerPlayer)
+      double = instance_double(
+        MattsTictactoeCore::ComputerPlayer)
       allow(double).to receive(:get_move).and_return(computer_move)
       allow(double).to receive(:type).and_return(:computer)
       double 
     end
-    let(:game) { Core::Game.new(player_x_type: :computer, player_o_type: :human, computer_player: computer_player_double) }
+    let(:game) { MattsTictactoeCore::Game.new(player_x_type: :computer, player_o_type: :human, computer_player: computer_player_double) }
     let(:game_output) { RackApp::GameUI.new(game).build }
     let(:html) { game_output.body.join("") }
 
@@ -77,7 +77,7 @@ describe RackApp::GameUI do
 
   context "with running game" do
     let(:moves) { [1, 2, 3] }
-    let(:game) { Core::Game.new(player_x_type: :human, player_o_type: :human, board: Board.new(moves)) }
+    let(:game) { MattsTictactoeCore::Game.new(player_x_type: :human, player_o_type: :human, board: MattsTictactoeCore::Board.new(moves)) }
     let(:game_output) { RackApp::GameUI.new(game).build }
     let(:html) { game_output.body.join("") }
 

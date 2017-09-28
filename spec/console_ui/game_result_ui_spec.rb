@@ -1,11 +1,11 @@
 require "console_ui/game_result_ui"
 require "console_ui/board_formatter"
-require "core/game"
+require "matts_tictactoe_core"
 
 describe ConsoleUI::GameResultUI do
   context "completed game: X wins" do
     let(:board) { x_winning_board }
-    let(:game) { Core::Game.new(player_x_type: :human, player_o_type: :human, board: board) }
+    let(:game) { MattsTictactoeCore::Game.new(player_x_type: :human, player_o_type: :human, board: board) }
     let(:game_result_ui) { build_game_result_ui(game) }
 
     it "prints final board" do
@@ -19,7 +19,7 @@ describe ConsoleUI::GameResultUI do
 
   context "completed game: O wins" do
     let(:board) { o_winning_board }
-    let(:game) { Core::Game.new(player_x_type: :human, player_o_type: :human, board: board) }
+    let(:game) { MattsTictactoeCore::Game.new(player_x_type: :human, player_o_type: :human, board: board) }
     let(:game_result_ui) { build_game_result_ui(game) }
 
     it "prints final board" do
@@ -33,7 +33,7 @@ describe ConsoleUI::GameResultUI do
 
   context "completed game: O wins" do
     let(:board) { drawn_board }
-    let(:game) { Core::Game.new(player_x_type: :human, player_o_type: :human, board: board) }
+    let(:game) { MattsTictactoeCore::Game.new(player_x_type: :human, player_o_type: :human, board: board) }
     let(:game_result_ui) { build_game_result_ui(game) }
 
     it "prints final board" do

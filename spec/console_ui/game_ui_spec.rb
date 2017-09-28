@@ -1,12 +1,11 @@
+require "matts_tictactoe_core"
 require "console_ui/game_ui"
-require "core/game"
-require "core/board"
 require "console_ui/board_formatter"
 
 describe ConsoleUI::GameUI do
   context "game with human player next" do
     let(:x_move) { 5 }
-    let(:game) { Core::Game.new(player_x_type: :human, player_o_type: :human) }
+    let(:game) { MattsTictactoeCore::Game.new(player_x_type: :human, player_o_type: :human) }
     let(:game_ui) { build_game_ui(game, x_move.to_s + "\n") }
 
     it "sends clear call to system" do
@@ -33,12 +32,12 @@ describe ConsoleUI::GameUI do
   context "game with computer player next" do
     let(:x_move) { 5 }
     let(:computer_player_double) do
-      double = instance_double(Core::ComputerPlayer)
+      double = instance_double(MattsTictactoeCore::ComputerPlayer)
       allow(double).to receive(:get_move).and_return(x_move)
       allow(double).to receive(:type).and_return(:computer)
       double
     end
-    let(:game) { Core::Game.new(player_x_type: :computer, player_o_type: :human, computer_player: computer_player_double) }
+    let(:game) { MattsTictactoeCore::Game.new(player_x_type: :computer, player_o_type: :human, computer_player: computer_player_double) }
     let(:game_ui) { build_game_ui(game) }
     
     it "sends clear call to system" do
@@ -64,7 +63,7 @@ describe ConsoleUI::GameUI do
 
   context "invalid human input (non integer input)" do
     let(:x_move) { 5 }
-    let(:game) { Core::Game.new(player_x_type: :human, player_o_type: :human) }
+    let(:game) { MattsTictactoeCore::Game.new(player_x_type: :human, player_o_type: :human) }
     let(:game_ui) { build_game_ui(game, "invalid input\n#{x_move}\n") }
 
     it "prints invalid input warning message" do
@@ -80,7 +79,7 @@ describe ConsoleUI::GameUI do
 
   context "invalid human input (move out of range)" do
     let(:x_move) { 5 }
-    let(:game) { Core::Game.new(player_x_type: :human, player_o_type: :human) }
+    let(:game) { MattsTictactoeCore::Game.new(player_x_type: :human, player_o_type: :human) }
     let(:game_ui) { build_game_ui(game, "12\n#{x_move}\n") }
 
     it "prints invalid input warning message" do
@@ -95,7 +94,7 @@ describe ConsoleUI::GameUI do
 
   context "invalid human input (move taken)" do
     let(:x_move) { 5 }
-    let(:game) { Core::Game.new(player_x_type: :human, player_o_type: :human, board: build_board(1,2)) }
+    let(:game) { MattsTictactoeCore::Game.new(player_x_type: :human, player_o_type: :human, board: build_board(1,2)) }
     let(:game_ui) { build_game_ui(game, "2\n#{x_move}\n") }
 
     it "prints invalid input warning message" do

@@ -1,5 +1,6 @@
 require "ostruct"
 require "rack"
+require "matts_tictactoe_core"
 require "rack_app/game_handler"
 require "rack_app/rack_router"
 
@@ -22,7 +23,7 @@ describe RackApp::GameHandler do
 
   context "with a GET request to /tic-tac-toe?x=human&o=human" do
     it "starts a new game" do
-      expect(app.get(game_path).body).to match(build_board_html(Board.new))
+      expect(app.get(game_path).body).to match(build_board_html(MattsTictactoeCore::Board.new))
     end
   end
 
@@ -30,7 +31,7 @@ describe RackApp::GameHandler do
     let(:body) { app.get(game_path + "?player_x_type=human&player_o_type=human&moves=1,3&move=5").body }
 
     it "requests board with input option for Player O" do
-      expect(body).to match(build_board_html(Board.new([1,3,5])))
+      expect(body).to match(build_board_html(MattsTictactoeCore::Board.new([1,3,5])))
     end
 
     it "prints form with next_player set to human" do
