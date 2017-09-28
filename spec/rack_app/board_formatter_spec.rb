@@ -1,7 +1,7 @@
 require "rack_app/board_formatter"
-require "rack_app/html_helpers"
+require "rack_app/ui_helpers"
 
-RSpec.configure { |config| config.include HtmlHelpers }
+RSpec.configure { |config| config.include UIHelpers }
 
 describe RackApp::BoardFormatter do
   context "empty board" do
@@ -29,5 +29,9 @@ describe RackApp::BoardFormatter do
     it "renders board with middle square as X" do
       expect(square_values).to eq(["1", "2", "3", "4", "X", "6", "7", "8", "O"])
     end
+  end
+
+  def build_formatted_board(*moves)
+    RackApp::BoardFormatter.new(build_board(*moves)).format
   end
 end
