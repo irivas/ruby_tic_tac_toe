@@ -26,6 +26,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
     lumberjack (1.0.12)
+    matts_tictactoe_core (0.1.0)
     method_source (0.8.2)
     mini_portile2 (2.3.0)
     nenv (0.3.0)
@@ -74,6 +75,7 @@ PLATFORMS
 DEPENDENCIES
   guard
   guard-rspec
+  matts_tictactoe_core
   nokogiri
   pry
   pry-nav
@@ -83,4 +85,4 @@ DEPENDENCIES
   simplecov
 
 BUNDLED WITH
-   1.15.3
+   1.16.0.pre.2

@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem "rack"
 gem "nokogiri"
+gem "matts_tictactoe_core"
 
 group :test, :development do
   gem "rspec"
