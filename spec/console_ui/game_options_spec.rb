@@ -1,7 +1,7 @@
 require "console_ui/game_options_ui"
-require "core/game_options"
+require "console_ui/game_options"
 
-describe GameOptions do
+describe ConsoleUI::GameOptions do
   describe "#run" do
     it "sets player_x and player_o to human for 'Human vs Human' game type" do
       game_options("1\n")
@@ -20,7 +20,7 @@ describe GameOptions do
     @input = StringIO.new(input)
     @output = StringIO.new
     ui = ConsoleUI::GameOptionsUI.new(input: @input, output: @output)
-    @game_options = GameOptions.new(ui)
+    @game_options = ConsoleUI::GameOptions.new(ui)
     @game_options.run
   end
 end

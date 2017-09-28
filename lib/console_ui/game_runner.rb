@@ -1,13 +1,8 @@
 require "console_ui/ui"
 require "console_ui/game_options_ui"
-require "console_ui/player_ui_builder"
-require "console_ui/game_result_ui_builder"
 require "console_ui/game_over_ui"
-require "core/game_options"
-require "console_ui/game_builder"
+require "console_ui/game_options"
 require "core/board"
-require "core/human_player"
-require "core/computer_player"
 require "core/alpha_beta"
 require "console_ui/game_instance_runner"
 
@@ -25,7 +20,7 @@ module ConsoleUI
     end
 
     def game_options
-      GameOptions.new(game_options_ui).run
+      ConsoleUI::GameOptions.new(game_options_ui).run
     end
 
     def game_options_ui
@@ -49,26 +44,6 @@ module ConsoleUI
         output: @output,
         player_x_type: game_options.player_x_type,
         player_o_type: game_options.player_o_type)
-    end
-
-    def player(player_type)
-      player_type == :human ? human_player : computer_player
-    end
-
-    def human_player
-      HumanPlayer.new(player_ui_builder)
-    end
-
-    def computer_player
-      ComputerPlayer.new(player_ui_builder, AlphaBeta, sleep_time: 0.5, max_depth: 4)
-    end
-
-    def player_ui_builder
-      ConsoleUI::PlayerUIBuilder.new(input: @input, output: @output)
-    end
-
-    def game_result_ui_builder
-      ConsoleUI::GameResultUIBuilder.new(input: @input, output: @output)
     end
   end
 end
