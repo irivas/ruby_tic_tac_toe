@@ -43,7 +43,7 @@ describe RackApp::GameHandler do
     let(:body) { app.get(game_path + "?player_x_type=computer&player_o_type=computer").body }
 
     it "prints empty board and form" do
-      expect(body).to include(build_board_html(Board.new))
+      expect(body).to include(build_board_html(MattsTictactoeCore::Board.new))
     end
 
     it "prints form with next_player set to computer" do
