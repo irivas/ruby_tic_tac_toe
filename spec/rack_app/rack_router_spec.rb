@@ -1,6 +1,6 @@
 require "rack"
 require "ostruct"
-require "rack_app/rack_router.rb"
+require "rack_app/rack_router"
 
 describe RackApp::RackRouter, router: true do
   let(:rack_router) { 

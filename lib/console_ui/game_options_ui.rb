@@ -1,7 +1,12 @@
 require "console_ui/ui"
 
 module ConsoleUI
-  class GameOptionsUI < ConsoleUI::UI
+  class GameOptionsUI
+    def initialize(options)
+      @input = options[:input]
+      @output = options[:output]
+    end
+
     def request_game_type
       clear_screen
       print_game_types_prompt
@@ -9,6 +14,11 @@ module ConsoleUI
     end
 
     private
+
+    def clear_screen
+      system("clear")
+    end
+
     def print_game_types_prompt
       @output.puts("Select game type:", *printable_game_type_list)
     end
@@ -43,7 +53,7 @@ module ConsoleUI
     end
   end
 
-  GameType = Struct.new(:player_x, :player_o, :description)
+  GameType = Struct.new(:player_x_type, :player_o_type, :description)
 
   HUMAN_HUMAN = GameType.new(:human, :human, "Human vs Human")
   HUMAN_COMPUTER = GameType.new(:human, :computer, "Human vs Computer")

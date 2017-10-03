@@ -11,7 +11,7 @@ describe ConsoleUI::GameRunner do
       game_runner, output = build_game_runner(instructions)
       game_runner.run
 
-      expect(output.string).to include("X wins!")
+      expect(output.string).to include("X Wins!")
       expect(output.string).to include(
         ConsoleUI::BoardFormatter.new(build_board(*moves)).format)
     end

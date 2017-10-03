@@ -1,5 +1,5 @@
 require "console_ui/board_formatter"
-require "core/board"
+require "matts_tictactoe_core"
 
 describe ConsoleUI::BoardFormatter do
   describe "#format" do

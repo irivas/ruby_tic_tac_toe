@@ -1,24 +1,42 @@
-require "console_ui/ui"
+require "console_ui/board_formatter"
 
 module ConsoleUI
-  class GameResultUI < ConsoleUI::UI
-    def report_result
+  class GameResultUI
+    def initialize(options)
+      @game = options[:game]
+      @output = options[:output]
+    end
+
+    def render
       clear_screen
       print_board
       print_result
     end
 
     private
+    
+    def clear_screen
+      system("clear")
+    end
+
+    def print_board
+      @output.puts(formatted_board)
+    end
+
+    def formatted_board
+      ConsoleUI::BoardFormatter.new(@game.board).format
+    end
+
     def print_result
       @output.puts(message)
     end
 
     def message
-      @board.winner? ? winning_message : draw_message
+      board.winner? ? winning_message : draw_message
     end
-
+    
     def winning_message
-      "#{winner} wins!"
+      "#{winner} Wins!"
     end
 
     def draw_message
@@ -26,7 +44,11 @@ module ConsoleUI
     end
 
     def winner
-      @board.winner.upcase
+      board.winner.upcase
+    end
+
+    def board
+      @game.board
     end
   end
 end
